@@ -1,10 +1,21 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Products</router-link> |
-    <router-link to="/about">About</router-link>
-  </div>
-  <router-view/>
+  <nav-bar/>
+  <router-view />
+  <site-footer />
 </template>
+
+<script>
+import NavBar from './components/navigation/NavBar.vue';
+import SiteFooter from './components/navigation/Footer.vue';
+
+export default {
+  name: 'Root',
+  components: {
+    NavBar,
+    SiteFooter,
+  },
+};
+</script>
 
 <style>
 #app {
