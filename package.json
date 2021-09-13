@@ -3,13 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
+    "serve": "json-server --watch mock_server/db.json --port 4000 & vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "core-js": "^3.6.5",
+    "json-server": "^0.16.3",
+    "lodash": "^4.17.21",
     "vue": "^3.0.0",
     "vue-router": "^4.0.0-0"
   },
@@ -43,7 +45,104 @@
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {},
+    "rules": {
+      "vue/array-bracket-spacing": [
+        "error",
+        "never"
+      ],
+      "vue/arrow-spacing": [
+        "error",
+        {
+          "before": true,
+          "after": true
+        }
+      ],
+      "vue/block-spacing": [
+        "error",
+        "always"
+      ],
+      "vue/brace-style": [
+        "error",
+        "stroustrup"
+      ],
+      "vue/camelcase": [
+        "warn",
+        {
+          "properties": "never",
+          "ignoreDestructuring": false
+        }
+      ],
+      "vue/component-name-in-template-casing": [
+        "error",
+        "kebab-case",
+        {
+          "registeredComponentsOnly": false
+        }
+      ],
+      "vue/eqeqeq": [
+        "error",
+        "always",
+        {
+          "null": "ignore"
+        }
+      ],
+      "vue/key-spacing": [
+        "error",
+        {
+          "beforeColon": false,
+          "afterColon": true,
+          "mode": "strict"
+        }
+      ],
+      "vue/object-curly-spacing": [
+        "error",
+        "never"
+      ],
+      "vue/order-in-components": [
+        "error",
+        {
+          "order": [
+            "el",
+            "name",
+            "parent",
+            "extends",
+            "mixins",
+            "components",
+            "functional",
+            "inheritAttrs",
+            "directives",
+            "filters",
+            [
+              "delimiters",
+              "comments"
+            ],
+            "model",
+            [
+              "props",
+              "propsData"
+            ],
+            "inject",
+            "provide",
+            "fetch",
+            "asyncData",
+            "data",
+            [
+              "template",
+              "render"
+            ],
+            "apollo",
+            "meteor",
+            "asyncComputed",
+            "computed",
+            "watch",
+            "LIFECYCLE_HOOKS",
+            "methods",
+            "head",
+            "renderError"
+          ]
+        }
+      ]
+    },
     "overrides": [
       {
         "files": [

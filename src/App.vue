@@ -14,32 +14,38 @@ export default {
     NavBar,
     SiteFooter,
   },
+  provide() {
+    const sizes = {};
+
+    Object.defineProperty(sizes, 'page', {
+      enumerable: true,
+      get: () => this.pageSizer,
+    });
+
+    return { sizes };
+  },
+  data() {
+    return {
+      pageSizer: null,
+    };
+  },
+  created() {
+    window.addEventListener('resize', this.handleResize);
+    this.handleResize();
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      const { innerHeight: height, innerWidth: width } = window;
+      this.pageSizer = { height, width };
+    },
+  },
 };
 </script>
 
-<style>
-body {
-  margin: 0;
-}
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
+<style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+@import "assets/styles/general.scss";
 </style>
